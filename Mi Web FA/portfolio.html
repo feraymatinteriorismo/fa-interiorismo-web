@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - FA Interiorismo</title>
+    <meta name="description" content="Explora nuestros proyectos de diseño interior. Transformaciones reales que mejoran la vida diaria.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Crimson+Text:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'warm-white': '#F8F6F2',
+                        'warm-beige': '#E8E2D5',
+                        'warm-stone': '#A8A094',
+                        'warm-gray': '#2C2B28',
+                        'warm-wood': '#D4B896'
+                    },
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'crimson': ['Crimson Text', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .text-gradient {
+            background: linear-gradient(135deg, #A8A094 0%, #D4B896 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .gallery-item {
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+        
+        .gallery-item img {
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover img {
+            filter: brightness(1.1);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal img {
+    max-width: 85vw;   /* ocupa hasta el 85% del ancho de la ventana */
+    max-height: 85vh;  /* ocupa hasta el 85% del alto de la ventana */
+    object-fit: contain; /* mantiene proporciones sin deformar */
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease;
+}
+
+    .modal img:hover {
+    transform: scale(1.02);
+    }
+
+    </style>
+</head>
+<body class="bg-warm-white text-warm-gray font-inter">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-warm-white/95 backdrop-blur-sm z-50 border-b border-warm-beige/50">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="font-crimson text-2xl font-semibold text-gradient">
+                    <a href="index.html">FA Interiorismo</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html#inicio" class="hover:text-warm-stone transition-colors">Inicio</a>
+                    <a href="index.html#sobre-mi" class="hover:text-warm-stone transition-colors">Sobre mí</a>
+                    <a href="index.html#servicios" class="hover:text-warm-stone transition-colors">Servicios</a>
+                    <a href="index.html#proceso" class="hover:text-warm-stone transition-colors">Proceso</a>
+                    <a href="portfolio.html" class="text-warm-stone font-medium">Portfolio</a>
+                    <a href="index.html#contacto" class="hover:text-warm-stone transition-colors">Contacto</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <section class="pt-32 pb-16 bg-warm-beige/20">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <h1 class="text-5xl md:text-6xl font-light mb-6 text-gradient">Portfolio</h1>
+            <p class="text-xl text-warm-stone max-w-3xl mx-auto">
+                Proyectos reales que transforman espacios y mejoran la vida diaria
+            </p>
+        </div>
+    </section>
+
+    <!-- Portfolio Grid -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Proyecto 1 -->
+                <div class="gallery-item bg-white rounded-3xl overflow-hidden shadow-lg cursor-pointer" onclick="openModal('./resources/dormitorio_bcn.png)">
+                    <img src="./resources/dormitorio_bcn.png" alt="Dormitorio contemporáneo" class="w-full h-80 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-3 font-crimson">Dormitorio Principal</h3>
+                        <p class="text-warm-stone mb-4">Dormitorio elegante y sereno, con diseño clásico de molduras y tonos neutros que invitan al descanso. Incorpora una cabecera tapizada y amplio almacenamiento.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-warm-beige/50 px-3 py-1 rounded-full text-sm">Reforma integral</span>
+                            <span class="bg-warm-beige/50 px-3 py-1 rounded-full text-sm">Dormitorio</span>
+                            <span class="bg-warm-beige/50 px-3 py-1 rounded-full text-sm">14m²</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 2 -->
+                <div class="gallery-item bg-white rounded-3xl overflow-hidden shadow-lg cursor-pointer" onclick="openModal('./resources/estudio_desdeliving.jpg')">
+                    <img src="./resources/estudio_desdeliving.jpg" alt="Salón integrado" class="w-full h-80 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-3 font-crimson">Diseño Integrado</h3>
+                        <p class="text-warm-stone mb-4">Espacio abierto funcional que fusiona cocina moderna y comedor. Presenta acabados neutros y un diseño optimizado ideal para la vida urbana.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-warm-beige/50 px-3 py-1 rounded-full text-sm">Vivienda pequeña</span>
+                            <span class="bg-warm-beige/50 px-3 py-1 rounded-full text-sm">Estudio</span>
+                            <span class="bg-warm-beige/50 px-3 py-1 rounded-full text-sm">25m²</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 3 -->
+                <div class="gallery-item bg-white rounded-3xl overflow-hidden shadow-lg cursor-pointer" onclick="openModal('./resources/cocina_verde_integral.png')">
+                    <img src="./resources/cocina_verde_integral.png" alt="Cocina verde" class="w-full h-80 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-3 font-crimson">Cocina Integral</h3>
+                        <p class="text-warm-stone mb-4">Cocina fresca y moderna con acabados naturales en tonos verdes y un diseño funcional. Incluye un comedor integrado con mobiliario de madera.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-warm-beige/50 px-3 py-1 rounded-full text-sm">Reforma</span>
+                            <span class="bg-warm-beige/50 px-3 py-1 rounded-full text-sm">Cocina</span>
+                            <span class="bg-warm-beige/50 px-3 py-1 rounded-full text-sm">15m²</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 4 -->
+                <div class="gallery-item bg-white rounded-3xl overflow-hidden shadow-lg cursor-pointer" onclick="openModal('./resources/baño_grisneutro.png')">
+                    <img src="./resources/baño_grisneutro.png" alt="Baño moderno" class="w-full h-80 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-3 font-crimson">Baño Moderno</h3>
+                        <p class="text-warm-stone mb-4">Baño minimalista con lavabo ovalado y estantes de madera que aportan calidez. El diseño funcional contrasta texturas de hormigón y elementos naturales.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-warm-beige/50 px-3 py-1 rounded-full text-sm">Reforma</span>
+                            <span class="bg-warm-beige/50 px-3 py-1 rounded-full text-sm">Baño</span>
+                            <span class="bg-warm-beige/50 px-3 py-1 rounded-full text-sm">6m²</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 5 -->
+                <div class="gallery-item bg-white rounded-3xl overflow-hidden shadow-lg cursor-pointer" onclick="openModal('./resources/dormitorio_zonatrabajo.jpg')">
+                    <img src="./resources/dormitorio_zonatrabajo.jpg" alt="Dormitorio con escritorio" class="w-full h-80 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-3 font-crimson">Dormitorio Funcional</h3>
+                        <p class="text-warm-stone mb-4">Dormitorio moderno que integra zona de descanso, estudio y almacenamiento. La madera clara y tonos neutros crean un ambiente cálido y organizado.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-warm-beige/50 px-3 py-1 rounded-full text-sm">Decoración</span>
+                            <span class="bg-warm-beige/50 px-3 py-1 rounded-full text-sm">Dormitorio</span>
+                            <span class="bg-warm-beige/50 px-3 py-1 rounded-full text-sm">13m²</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 6 -->
+                <div class="gallery-item bg-white rounded-3xl overflow-hidden shadow-lg cursor-pointer" onclick="openModal('./resources/living_boho.png')">
+                    <img src="./resources/living_boho.png" alt="Salón moderno" class="w-full h-80 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-3 font-crimson">Salón Acogedor</h3>
+                        <p class="text-warm-stone mb-4">Salón cálido y relajante con sofá modular en tonos tierra. Elementos naturales y arte abstracto crean un ambiente armonioso y acogedor.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-warm-beige/50 px-3 py-1 rounded-full text-sm">Diseño integral</span>
+                            <span class="bg-warm-beige/50 px-3 py-1 rounded-full text-sm">Living</span>
+                            <span class="bg-warm-beige/50 px-3 py-1 rounded-full text-sm">16m²</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 7 -->
+                <div class="gallery-item bg-white rounded-3xl overflow-hidden shadow-lg cursor-pointer" onclick="openModal('./resources/cocina_beige.png')">
+                    <img src="./resources/cocina_beige.png" alt="Cocina beige" class="w-full h-80 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-3 font-crimson">Cocina Moderna</h3>
+                        <p class="text-warm-stone mb-4">Cocina de diseño contemporáneo, con gabinetes en tonos neutros que combinan madera y cristal. Ofrece una zona de comedor y un acogedor rincón tipo banco.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-warm-beige/50 px-3 py-1 rounded-full text-sm">Cocina</span>
+                            <span class="bg-warm-beige/50 px-3 py-1 rounded-full text-sm">Reforma integral</span>
+                            <span class="bg-warm-beige/50 px-3 py-1 rounded-full text-sm">14m²</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 8 -->
+                <div class="gallery-item bg-white rounded-3xl overflow-hidden shadow-lg cursor-pointer" onclick="openModal('./resources/comedor_boho.png')">
+                    <img src="./resources/comedor_boho.png" alt="Comedor moderno" class="w-full h-80 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-3 font-crimson">Comedor Sereno</h3>
+                        <p class="text-warm-stone mb-4">Comedor de estilo natural con mobiliario de madera clara y ratán que evoca tranquilidad. La decoración artesanal y las plantas aportan frescura y calidez.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-warm-beige/50 px-3 py-1 rounded-full text-sm">Decoración</span>
+                            <span class="bg-warm-beige/50 px-3 py-1 rounded-full text-sm">Comedor</span>
+                            <span class="bg-warm-beige/50 px-3 py-1 rounded-full text-sm">11m²</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 9 -->
+                <div class="gallery-item bg-white rounded-3xl overflow-hidden shadow-lg cursor-pointer" onclick="openModal('./resources/baño_natural.png')">
+                    <img src="./resources/baño_natural.png" alt="Baño rústico" class="w-full h-80 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold mb-3 font-crimson">Baño Rústico</h3>
+                        <p class="text-warm-stone mb-4">Baño de estilo rústico moderno que combina azulejos blancos y mobiliario de madera. El lavabo decorado y los elementos naturales aportan un toque artesanal y fresco.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="bg-warm-beige/50 px-3 py-1 rounded-full text-sm">Reforma</span>
+                            <span class="bg-warm-beige/50 px-3 py-1 rounded-full text-sm">Baño</span>
+                            <span class="bg-warm-beige/50 px-3 py-1 rounded-full text-sm">6m²</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-warm-beige/20">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-light mb-6 text-gradient">¿Listo para transformar tu espacio?</h2>
+            <p class="text-xl text-warm-stone mb-8">
+                Cada proyecto es único. Trabajemos juntos para crear el espacio que siempre soñaste.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="window.location.href='index.html#contacto'" class="bg-gradient-to-r from-warm-stone to-warm-wood text-white px-8 py-4 rounded-full font-medium hover:shadow-lg transition-all">
+                    Comenzar proyecto
+                </button>
+                <button onclick="window.location.href='index.html#servicios'" class="border-2 border-warm-stone text-warm-stone px-8 py-4 rounded-full font-medium hover:bg-warm-stone hover:text-white transition-all">
+                    Ver servicios
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-warm-gray text-warm-white py-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center">
+                <div class="font-crimson text-2xl font-semibold mb-4 text-gradient">
+                    FA Interiorismo
+                </div>
+                <p class="text-warm-white/80 mb-6">
+                    Espacios reales. Diseño funcional. Resultados que se viven.
+                </p>
+                <p class="text-warm-white/60 text-sm">
+                    © 2024 FA Interiorismo. Todos los derechos reservados.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Imagen -->
+    <div id="image-modal" class="modal">
+        <div class="relative">
+            <img id="modal-image" src="" alt="" class="rounded-lg">
+            <button onclick="closeModal()" class="absolute -top-12 right-0 text-white text-2xl hover:text-warm-beige transition-colors">
+                ✕
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Modal functions
+        function openModal(imageSrc) {
+            const modal = document.getElementById('image-modal');
+            const modalImage = document.getElementById('modal-image');
+            
+            modalImage.src = imageSrc;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('image-modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal on outside click
+        document.addEventListener('click', (e) => {
+            const modal = document.getElementById('image-modal');
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Close modal with ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
